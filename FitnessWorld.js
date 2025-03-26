@@ -15,6 +15,19 @@ const IntenseWorkoutPlans = [
 ];
 
 export default function FitnessWorld() {
+    const renderWorkout = ({ item }) => (
+       <View style={styles.workoutCard}>
+                  <Image source={{ uri: item.imageUrl }} style={styles.workoutImage} />
+                  <Text style={styles.workoutTitle}>{item.title}</Text>
+                  <Text style={styles.workoutDescp}>{item.description}</Text>
+                  <Text style={styles.workoutDescp} testID="workoutDescp">Duration: {item.duration}</Text>
+                  <TouchableOpacity style={styles.joinButton} onPress={()=> alert(`Joined$`)}>
+                    <Text style={styles.buttonText}>
+                        Join Now
+                    </Text>
+                  </TouchableOpacity>
+       </View>
+    )
 
     return (
       <ScrollView style={styles.container}>
@@ -52,8 +65,12 @@ export default function FitnessWorld() {
         </View>
   
         {/*Popular Workout Plans Section */}
-      
-  
+        <View style={styles.section}>
+            <Text style={styles.header}>
+                Popular Workout Plans
+            </Text>
+
+        </View>
   
         {/*Intense Workout Plans Section*/}
   
@@ -107,5 +124,41 @@ export default function FitnessWorld() {
             fontSize: 16,
             fontWeight: 'bold',
             color: '#4caf50',
+          },
+          workoutCard: {
+            marginRight: 20,
+            width: 200,
+            padding: 10,
+            borderColor: '#ccc',
+            borderWidth: 1,
+            borderRadius: 10,
+            backgroundColor: '#fff',
+            textAlign:'center'
+          },
+          workoutImage: {
+            width: '100%',
+            height: 100,
+            borderRadius: 10,
+          },
+          workoutTitle: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            marginTop: 10,
+            color: '#333',
+            textAlign:'center'
+          },
+          workoutDescp:{
+         textAlign:'center'
+          },
+          joinButton: {
+            marginTop: 10,
+            backgroundColor: '#ff7f00',
+            paddingHorizontal: 12,
+            borderRadius: 5,
+          },
+          buttonText: {
+            color: '#fff',
+            fontWeight: 'bold',
+            textAlign: 'center',
           },
   })
